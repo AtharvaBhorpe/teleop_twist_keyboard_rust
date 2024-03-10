@@ -39,11 +39,11 @@ Clone this repository, then run `cargo run` in the *teleop_twist_keyboard_rust* 
 
 ```bash
 
-git  clone  https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust
+git clone https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust
 
-cd  teleop_twist_keyboard_rust
+cd teleop_twist_keyboard_rust  # Change to the parent directory
 
-cargo run
+cargo run  # This command will build and run the code.
 
 ```
 
