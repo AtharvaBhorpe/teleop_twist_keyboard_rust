@@ -35,7 +35,16 @@ As this package is implemented using [r2r](https://github.com/sequenceplanner/r2
 
 Clone this repository, then run `cargo run` in the *teleop_twist_keyboard_rust* folder, and ***voilà***!
 
-  
+
+## Prerequisites
+Install the following if the `cargo run` fails.
+```bash
+
+sudo apt-get update
+sudo apt install make clang pkg-config libssl-dev
+
+```
+
 
 ```bash
 
