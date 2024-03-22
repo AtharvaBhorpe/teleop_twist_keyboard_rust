@@ -5,7 +5,18 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+
+[[bin]]
+name = "teleop_twist_keyboard_rust"
+path = "src/teleop_twist_keyboard_rust.rs"
+
 [dependencies]
-r2r = "0.8.3"
+rclrs = "*"
+geometry_msgs = "*"
 termios = "0.3.3"
 lazy_static = "1.4"
+anyhow = "*"
+
+[package.metadata.ros]
+install_to_share = ["launch"]
+anyhow = {version = "1", features = ["backtrace"]}

@@ -2,8 +2,9 @@ use std::os::fd::AsRawFd;
 use termios::*;use std::collections::HashMap;
 use std::io::{self, Read};
 use std::thread;
+use std::env;
+use anyhow::{Error, Result};
 use std::time::Duration;
-use r2r::*;
 use geometry_msgs::msg::Twist;
 use lazy_static::*;
 
@@ -156,20 +157,21 @@ fn a_vel(key: char, th: f64) -> f64 {
     }
 }
 
-fn main() -> Result<() > {
+fn main() -> Result<(), Error> {
     // node init
-    let context: Context = Context::create()?;
-    let mut node: Node = Node::create(context, "teleop", "")?;    //  Node::create(ctx, name, namespace);
+    let context = rclrs::Context::new(env::args())?;
+    let node = rclrs::create_node(&context, "teleop_twist_keyboard_rust")?;
 
     // define publisher
-    let _pub = node.create_publisher::<Twist>("/cmd_vel", QosProfile::default())?;
+    let publisher =
+        node.create_publisher::<geometry_msgs::msg::Twist>("/cmd_vel", rclrs::QOS_PROFILE_DEFAULT)?;
 
     let mut twist = Twist::default();
 
     println!("{}", MSG);
     println!("\nNow top Speed is {} and turn is {} | Last command: ", unsafe { SPEED }, unsafe { TURN });
 
-    loop {
+    while context.ok() {
         // get the pressed key
         unsafe {
             KEY = getch();
@@ -273,7 +275,7 @@ fn main() -> Result<() > {
             twist.angular.z = TH * TURN;
         }
 
-        let _ = _pub.publish(&twist);
+        publisher.publish(&twist)?;
         thread::sleep(Duration::from_millis(100));
     }
     Ok(())
