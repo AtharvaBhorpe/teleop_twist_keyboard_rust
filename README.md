@@ -5,7 +5,8 @@ Rust Implementation of the Generic Keyboard Teleop for ROS2: https://github.com/
 
 This node is a rust implementation of https://github.com/aarsht7/teleop_cpp_ros2. Please give this repo some love!
 
-  
+> This node is implemented using the [rclrust](https://github.com/ros2-rust/ros2_rust) client library.
+> For the official [r2r](https://github.com/sequenceplanner/r2r) client library implementation, please refer [this branch](https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust).  
 
 ## Features
 
@@ -26,18 +27,20 @@ Furthermore, the last command that was sent is reflected, and invalid commands a
   
 
 > Note: 
-> 1. This package does not implement ament/colcon/Cmake.
+> 1. This package implements ament/colcon/Cmake.
 > 2. The code is synchronous.
 
   
 
-As this package is implemented using [r2r](https://github.com/sequenceplanner/r2r), the standard ROS practice of creating a workspace is not needed (although can be implemented).
+As this package is implemented using [rclrust](https://github.com/ros2-rust/ros2_rust) client library, the standard ROS practice of creating a workspace is followed.
 
-Clone this repository, then run `cargo run` in the *teleop_twist_keyboard_rust* folder, and ***voilà***!
+1. Visit the [rclrust repo](https://github.com/ros2-rust/ros2_rust) to understand the installation process of rclrust.
+2. Clone this repository branch in the ***src*** folder of your ROS 2 workspace.
+3. Run `colcon build` in your ROS 2 workspace directory, and ***voilà***!
 
 
 ## Prerequisites
-Install the following if the `cargo run` fails.
+Install the following if the `cargo run` or `colcon build` fails.
 ```bash
 
 sudo apt-get update
@@ -48,11 +51,15 @@ sudo apt install make clang pkg-config libssl-dev
 
 ```bash
 
-git clone https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust
+cd your_ros2_workspace/src
 
-cd teleop_twist_keyboard_rust  # Change to the parent directory
+git clone -b rclrust https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust
 
-cargo run  # This command will build and run the code.
+cd..  # Change to the parent directory
+
+colcon build  # This command will build the package.
+
+. ./install/setup.sh
 
 ```
 
@@ -66,10 +73,9 @@ cargo run  # This command will build and run the code.
 
 ```bash
 
-cd teleop_twist_keyboard_rust
-./target/debug/teleop_twist_keyboard_rust # or .\target\debug\teleop_twist_keyboard_rust.exe on Windows
-  
-  
+ros2 run teleop_twist_keyboard_rust teleop_twist_keyboard_rust
+
+
 
 # If you want to see the outputs, check the /cmd_vel topic
 
@@ -167,4 +173,4 @@ CTRL-C to quit
 ## TODO
 
  - [ ] Implement asynchronous methods.
- - [ ] Implement the same node using official [rclrust](https://github.com/ros2-rust/ros2_rust).
+ - [x] Implement the same node using official [rclrust](https://github.com/ros2-rust/ros2_rust).
