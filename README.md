@@ -171,4 +171,4 @@ CTRL-C to quit
 ## TODO
 
  - [ ] Implement asynchronous methods.
- - [ ] Implement the same node using official [rclrust](https://github.com/ros2-rust/ros2_rust).
+ - [x] Implement the same node using official [rclrust](https://github.com/ros2-rust/ros2_rust).
