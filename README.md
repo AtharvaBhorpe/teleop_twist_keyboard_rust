@@ -5,8 +5,8 @@ Rust Implementation of the Generic Keyboard Teleop for ROS2: https://github.com/
 
 This node is a rust implementation of https://github.com/aarsht7/teleop_cpp_ros2. Please give this repo some love!
 
-> This node is implemented using the [rclrust](https://github.com/ros2-rust/ros2_rust) client library.
-> For the official [r2r](https://github.com/sequenceplanner/r2r) client library implementation, please refer [this branch](https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust).  
+> This node is implemented using the official [rclrust](https://github.com/ros2-rust/ros2_rust) client library.
+> For the [r2r](https://github.com/sequenceplanner/r2r) client library implementation, please refer [this branch](https://github.com/AtharvaBhorpe/teleop_twist_keyboard_rust).  
 
 ## Features
 
@@ -27,7 +27,7 @@ Furthermore, the last command that was sent is reflected, and invalid commands a
   
 
 > Note: 
-> 1. This package implements ament/colcon/Cmake.
+> 1. This package implements colcon.
 > 2. The code is synchronous.
 
   
