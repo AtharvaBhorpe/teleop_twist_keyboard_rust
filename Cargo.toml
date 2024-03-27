@@ -15,8 +15,4 @@ rclrs = "*"
 geometry_msgs = "*"
 termios = "0.3.3"
 lazy_static = "1.4"
-anyhow = "*"
-
-[package.metadata.ros]
-install_to_share = ["launch"]
 anyhow = {version = "1", features = ["backtrace"]}
